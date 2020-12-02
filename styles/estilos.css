@@ -1,0 +1,44 @@
+#cabecalho {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 70px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+section {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: grid;
+    justify-content: center;
+    margin-bottom: 20px;
+    
+}
+
+#section1 {
+    margin-bottom: 40px;
+}
+
+table, th, tr, td{
+    border: solid black 1px;
+    font-family: monospace;
+}
+
+th{
+    background-color: lightgrey;
+    
+}
+
+td {
+   text-align: left;
+   padding-left: 5px;
+}
+
+table {
+    border-collapse: collapse;
+    text-align: center;
+}
+
+
+
+
+
+
