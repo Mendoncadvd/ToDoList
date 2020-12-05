@@ -1,9 +1,10 @@
-var id = 0;
-
-$(document).ready(criarTabela());
+$(document).ready(function() {
+criarTabela();
+});
 
 function criarTabela() {
-    $("#tabela").remove();
+    var id = 0;
+    $("#tabela").remove();   
     $("#section2").append(
         "<table id = 'tabela'>" +
             "<tr style = 'width: 300px'>" +
@@ -12,23 +13,29 @@ function criarTabela() {
                 "<th>Excluir</th>" +
             "</tr>"+
         "</table>"
-    );
-    
-    for(id = 0; id < localStorage.length; id++) {
-        $("#tabela").append(
-            "<tr id = 'row" + id + "'>" +
-                "<td> <input type='checkbox' id = 'checkbox" + id + "'" + 
-                "onclick='lineThrough( " + id + ")'" + " value = 'false'></td>" +
-                "<td id = 'linha" + id + "'>" + localStorage.getItem(id) + "</td>" +
-                "<td><button type = 'button' class='botao' id = 'botao" + id + "'" + 
-                "onclick = 'deletaLinha( " + id + ")'>"+
-                "<img src='assets/lixocinza.ico'></button></td>" +
-            "</tr>"
-        );
-        var idToString ="#linha" + id.toString();
-        $(idToString).css("width", "300px");
-    }   
+);
+    for(id = 0; id <= localStorage.length; id++) {
+        var item = localStorage.getItem(id);
+        if (item != null) {
+            $("#tabela").append(
+                "<tr id = 'row" + id + "'>" +
+                    "<td> <input type='checkbox' id = 'checkbox" + id + "'" + 
+                    "onclick='lineThrough( " + id + ")'" + " value = 'false'></td>" +
+                    "<td id = 'linha" + id + "'>" + item + "</td>" +
+                    "<td><button type = 'button' class='botao' id = 'botao" + id + "'" + 
+                    "onclick = 'deletaLinha( " + id + ")'>"+
+                    "<img src='assets/lixocinza.ico'></button></td>" +
+                "</tr>"
+            );
+            alert("A id é " + id + " e o item é " + item);
+            var idToString ="#linha" + id.toString();
+            $(idToString).css("width", "300px");
+        }
+            
+    }
 }
+
+
 
 $("#btn").click(function enviaDado() {
     var usuarioInput = $("#listInput").val();
@@ -62,6 +69,6 @@ function deletaLinha() {
     var resposta = confirm("Deseja realmente excluir o item: " + item + "?");
     if(resposta == true) {
         localStorage.removeItem(pegaId);
-        $(linha).hide();
+        criarTabela();
     }
 }
