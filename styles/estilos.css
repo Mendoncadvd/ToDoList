@@ -1,5 +1,5 @@
-body{
-   background-color: aliceblue;
+body {
+    background-color: aliceblue;
 }
 
 label {
@@ -23,19 +23,18 @@ section {
     display: grid;
     justify-content: center;
     margin-bottom: 20px;
-    
 }
 
 #section1 {
     margin-bottom: 40px;
 }
 
-table, th, tr, td{
+table, th, tr, td {
     border: solid black 1px;
     font-family: 'Courier New', Courier, monospace;
 }
 
-th{
+th {
     background-color: lightgrey;
 }
 
@@ -47,21 +46,11 @@ th{
 }
 
 td {
-   text-align: left;
-   padding-left: 13px;
+    text-align: left;
+    padding-left: 13px;
 }
 
 table {
     border-collapse: collapse;
     text-align: center;
 }
-
-
-
-
-
-
-
-
-
-
