@@ -61,7 +61,7 @@ function deletaLinha() {
     pegaId.toString();
     var item = localStorage.getItem(pegaId)
     var linha = "#row" + pegaId;
-    var resposta = confirm("Deseja realmente excluir o item: " + item + " da id " + pegaId +"?");
+    var resposta = confirm("Deseja realmente excluir o item: " + item + "?");
     if(resposta == true) {
         localStorage.removeItem(pegaId);
         $(linha).hide();
