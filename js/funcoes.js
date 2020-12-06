@@ -1,4 +1,6 @@
+var id = 0;
 $(document).ready(function() {
+
     criarTabela();
 });
 
@@ -15,22 +17,25 @@ function criarTabela() {
     );
     var arrayKeys = Object.keys(localStorage);
     var arrayOrdenado = ordenaArray(arrayKeys);
-    for (var id = 0; id < localStorage.length; id++) {
-        var item = JSON.parse(localStorage.getItem(arrayOrdenado[id]));
+    for (var i = 0; i < localStorage.length; i++) {
+        if (parseInt(arrayOrdenado[i]) > id) {
+            id = parseInt(arrayOrdenado[i]);
+        }
+        var item = JSON.parse(localStorage.getItem(arrayOrdenado[i]));
         $("#tabela").append(
-            "<tr id = 'row" + arrayOrdenado[id] + "'>" +
-            "<td> <input type='checkbox' id = 'checkbox" + arrayOrdenado[id] + "'" +
-            "onclick='lineThrough( " + arrayOrdenado[id] + ")'" + " value = '" + item.check + "'></td>" +
-            "<td id = 'linha" + arrayOrdenado[id] + "'>" + item.input + "</td>" +
-            "<td><button type = 'button' class='botao' id = 'botao" + arrayOrdenado[id] + "'" +
-            "onclick = 'deletaLinha( " + arrayOrdenado[id] + ")'>" +
+            "<tr id = 'row" + arrayOrdenado[i] + "'>" +
+            "<td> <input type='checkbox' id = 'checkbox" + arrayOrdenado[i] + "'" +
+            "onclick='lineThrough( " + arrayOrdenado[i] + ")'" + " value = '" + item.check + "'></td>" +
+            "<td id = 'linha" + arrayOrdenado[i] + "'>" + item.input + "</td>" +
+            "<td><button type = 'button' class='botao' id = 'botao" + arrayOrdenado[i] + "'" +
+            "onclick = 'deletaLinha( " + arrayOrdenado[i] + ")'>" +
             "<img src='assets/lixocinza.ico'></button></td>" +
             "</tr>"
         );
-        var idToString = "#linha" + arrayOrdenado[id];
+        var idToString = "#linha" + arrayOrdenado[i];
         $(idToString).css("width", "300px");
-        var linha = "#linha" + arrayOrdenado[id].toString();
-        var idCheckbox = "#checkbox" + arrayOrdenado[id];
+        var linha = "#linha" + arrayOrdenado[i].toString();
+        var idCheckbox = "#checkbox" + arrayOrdenado[i];
         if (item.check == true) {
             $(linha).css("text-decoration", "line-through");
             $(idCheckbox).attr("checked", "checked");
@@ -42,7 +47,7 @@ function criarTabela() {
 
 $("#btn").click(function enviaDado() {
     var usuarioInput = $("#listInput").val();
-    var id = localStorage.length + 1;
+    id += 1;
     var dados = { input: usuarioInput, check: false };
     localStorage.setItem(id.toString(), JSON.stringify(dados));
     criarTabela();
