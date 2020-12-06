@@ -46,6 +46,7 @@ th {
     background-color: aliceblue;
     border-color: none;
     border: none;
+    outline: none;
 }
 
 td {
