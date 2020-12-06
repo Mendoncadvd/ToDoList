@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
     criarTabela();
 });
 
@@ -20,7 +20,7 @@ function criarTabela() {
         $("#tabela").append(
             "<tr id = 'row" + arrayOrdenado[id] + "'>" +
             "<td> <input type='checkbox' id = 'checkbox" + arrayOrdenado[id] + "'" +
-            "onclick='lineThrough( " + arrayOrdenado[id] + ")'" + " value = '"+ item.check +"'></td>" +
+            "onclick='lineThrough( " + arrayOrdenado[id] + ")'" + " value = '" + item.check + "'></td>" +
             "<td id = 'linha" + arrayOrdenado[id] + "'>" + item.input + "</td>" +
             "<td><button type = 'button' class='botao' id = 'botao" + arrayOrdenado[id] + "'" +
             "onclick = 'deletaLinha( " + arrayOrdenado[id] + ")'>" +
@@ -34,7 +34,7 @@ function criarTabela() {
         if (item.check == true) {
             $(linha).css("text-decoration", "line-through");
             $(idCheckbox).attr("checked", "checked");
-        }else {
+        } else {
             $(linha).css("text-decoration", "none");
         }
     }
@@ -43,7 +43,7 @@ function criarTabela() {
 $("#btn").click(function enviaDado() {
     var usuarioInput = $("#listInput").val();
     var id = localStorage.length + 1;
-    var dados = {input: usuarioInput, check:false};
+    var dados = { input: usuarioInput, check: false };
     localStorage.setItem(id.toString(), JSON.stringify(dados));
     criarTabela();
     $("#listInput").val('');
@@ -54,17 +54,17 @@ function lineThrough() {
     var idCheckBox = "#checkbox" + pegaId.toString();
     var item = JSON.parse(localStorage.getItem(pegaId));
     var usuarioInput = item.input;
-    
+
     if ($(idCheckBox).val() == "false") {
-        item = {input: usuarioInput, check: true};
+        item = { input: usuarioInput, check: true };
         localStorage.setItem(pegaId.toString(), JSON.stringify(item));
     } else {
-        item = {input: usuarioInput, check: false};
+        item = { input: usuarioInput, check: false };
         localStorage.setItem(pegaId.toString(), JSON.stringify(item));
     }
     criarTabela();
-    
-} 
+
+}
 
 function deletaLinha() {
     var pegaId = arguments[0].toString();
@@ -78,6 +78,6 @@ function deletaLinha() {
 
 function ordenaArray(ordena) {
     var pegaArray = ordena;
-    pegaArray.sort(function (a, b) { return a - b });
+    pegaArray.sort(function(a, b) { return a - b });
     return ordena;
 }
